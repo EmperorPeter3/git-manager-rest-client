@@ -2,12 +2,12 @@
 
 /* App Module */
 
-var stashrestApp = angular.module('gerritRestApp', [
+var stashrestApp = angular.module('stashRestApp', [
   'ngRoute',
   'dgAuth',
-  'gerritrestControllers',
-  'gerritrestFilters',
-  'gerritrestServices'
+  'stashrestControllers',
+  'stashrestFilters',
+  'stashrestServices'
 ]);
 
 stashrestApp.config(['$routeProvider',
@@ -15,11 +15,11 @@ stashrestApp.config(['$routeProvider',
     $routeProvider.
       when('/group', {
         templateUrl: 'partials/group-list.html',
-        controller: 'ProjectsListCtrl'
+        controller: 'GroupListCtrl'
       }).
       when('/group/:userId', {
-        templateUrl: 'partials/user-detail.html',
-        controller: 'UserDetailCtrl'
+        templateUrl: 'partials/user-list.html',
+        controller: 'UserListCtrl'
       }).
       otherwise({
         redirectTo: '/group'

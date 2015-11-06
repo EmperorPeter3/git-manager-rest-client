@@ -2,7 +2,7 @@
 
 /* Services */
 
-var stashrestServices = angular.module('gerritrestServices', ['ngResource']);
+var stashrestServices = angular.module('stashrestServices', ['ngResource']);
 
 stashrestServices.factory('User', ['$resource',
 	function($resource){
@@ -12,9 +12,9 @@ stashrestServices.factory('User', ['$resource',
 }]);
 
 /*
-stashrestServices.factory('Gerrit', ['$resource',
+stashrestServices.factory('Stash', ['$resource',
 	function($resource){
-		return $resource('http://zru11ubu01v.spb.mot.com:4000/gerrit/a/projects/', {}, {
+		return $resource('http://stash.mot-solutions.com:7990/rest/api/1.0/projects/', {}, {
 			query: {method:'GET', isArray:true}
 		});
 }]);

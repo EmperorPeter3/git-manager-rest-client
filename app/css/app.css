@@ -4,6 +4,10 @@ body {
   padding-top: 20px;
 }
 
+.container.main{
+  padding-top: 50px;
+}
+
 .group {
   list-style: none;
 }
