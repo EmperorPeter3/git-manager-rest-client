@@ -4,18 +4,32 @@
 
 var stashrestServices = angular.module('stashrestServices', ['ngResource']);
 
+
 stashrestServices.factory('User', ['$resource',
 	function($resource){
-		return $resource('group/:userId.json', {}, {
-			query: {method:'GET', params:{userId:'group'}, isArray:true}
+		return $resource('http://stash.mot-solutions.com:7990/rest/api/1.0/admin/groups/more-members?context=:c', {}, {
+			getByGroup: {
+				method:'GET', 
+				isArray:true,
+				transformResponse:function(data, responseHeaders) {
+					data = JSON.parse(data);
+					return data.values;
+				}
+			}
 		});
 }]);
 
-/*
-stashrestServices.factory('Stash', ['$resource',
+stashrestServices.factory('Group', ['$resource',
 	function($resource){
-		return $resource('http://stash.mot-solutions.com:7990/rest/api/1.0/projects/', {}, {
-			query: {method:'GET', isArray:true}
-		});
+		return $resource('http://stash.mot-solutions.com:7990/rest/api/1.0/admin/groups/', {}, {
+			query: {
+				method:'GET',
+				isArray:true,
+				transformResponse:function(data, responseHeaders) {
+					data = JSON.parse(data);
+					return data.values;
+				}
+			}
+		}
+		);
 }]);
-*/

@@ -1,11 +1,7 @@
-<div class="container-fluid" ng-controller="GroupListCtrl">
-
-  <ul class="group">
-
-    <li ng-repeat="p in projects | filter:query track by $index | orderBy:orderProp">
-      <p>name: {{p.name}}</p>
-      <p>id: {{p.id}}</p>
-      <p>description: {{p.description}}</p>
-    </li>
-  </ul>
+<div class="container-fluid">
+	<div class="list-group">
+		<div ng-repeat="p in projects | filter:query track by $index | orderBy:orderProp" class="groupList">
+			<a href="#" ng-class="getListClass(p.name)" ng-click="getUsersByGroup(p.name)">{{p.name}}</a>
+		</div>
+	</div>
 </div>

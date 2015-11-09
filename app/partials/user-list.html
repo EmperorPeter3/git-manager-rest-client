@@ -1,11 +1,11 @@
-<div class="container-fluid" ng-controller="UserListCtrl">
-
-  <ul class="group">
-
-    <li ng-repeat="p in projects | filter:query track by $index | orderBy:orderProp">
-      <p>name: {{p.name}}</p>
-      <p>id: {{p.id}}</p>
-      <p>description: {{p.description}}</p>
-    </li>
-  </ul>
+<div class="container-fluid">
+<!--infinite-scroll='loadMore()' infinite-scroll-distance='10' -->
+	<div class="list-group">
+		<div ng-repeat="u in users | filter:query track by $index | orderBy:orderProp" class="userList">
+			<a href="#" class="list-group-item"> id: {{u.id}} </a>
+			<a href="#" class="list-group-item"> CoreID: {{u.name}} </a>
+			<a href="#" class="list-group-item"> name: {{u.displayName}} </a>
+			<a href="#" class="list-group-item"> email: {{u.emailAddress}} </a>
+		</div>
+	</div>
 </div>

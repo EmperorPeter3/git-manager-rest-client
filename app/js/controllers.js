@@ -13,35 +13,36 @@ stashrestControllers.config(['$httpProvider', 'dgAuthServiceProvider', '$base64'
 			            method: 'GET',
 			            url: 'http://stash.mot-solutions.com:7990'
 			        }});
-			dgAuthServiceProvider.setHeader('Authorization: Basic ' + $base64.encode('mrj864:Iwb4lvn()66'));
+			//dgAuthServiceProvider.setHeader('Authorization: Basic ' + $base64.encode('mrj864:Iwb4lvn()66'));
 		}
 ]);
 
-stashrestControllers.controller('GroupListCtrl', ['$scope', '$http', '$base64', 'dgAuthService',
-	function($scope, $http, $base64, dgAuthService) {
+stashrestControllers.controller('navBarCtrl',
+	['$scope','dgAuthService',
+	function($scope, dgAuthService) {
 		dgAuthService.start();
-		$http({
-			method: 'GET',
-			url: 'http://stash.mot-solutions.com:7990/rest/api/1.0/projects/'
-		}).success(function(result) {
-			$scope.projects = result.values;
-		}).then(function successCallback(response) {
-			console.log('Success rest request');
-		}, function errorCallback(response) {
-		    alert ('failed to send xhttp: ' + response);
-		});
-	
-}]);
+		$scope.menuUIUrl = "partials/navbar-menu.html";
+	}]
+);
 
-stashrestControllers.controller('UserDetailCtrl', ['$scope', '$routeParams', 'User',
-	function($scope, $routeParams, User ){
-		$scope.user = User.get({userId: $routeParams.userId}, function(user){
-			$scope.mainImageUrl = user.images[0];
-		});
+stashrestControllers.controller('GroupListCtrl', 
+	['$scope', '$http', '$base64', 'dgAuthService', 'Group', 'User',
+	function($scope, $http, $base64, dgAuthService, Group, User) {
+		$scope.groupUIUrl = "partials/group-list.html";
+		$scope.userUIUrl = "partials/user-list.html";
+		$scope.projects = Group.query();
+		$scope.getUsersByGroup = function(groupName){
+			$scope.activeGroup = groupName;
+			$scope.users = User.getByGroup({c:groupName});
+		};
+		$scope.getListClass = function(groupName){
+			if ($scope.activeGroup == groupName) {
+				return 'list-group-item active';
+			} else {
+				return 'list-group-item';
+			}
+		};
+		
+	}]
+);
 
-		$scope.setImage = function(imageUrl){
-			$scope.mainImageUrl = imageUrl;
-		}
-
-		$scope.userId = $routeParams.userId;
-	}]);

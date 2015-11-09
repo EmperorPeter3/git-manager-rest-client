@@ -3,13 +3,15 @@
 /* App Module */
 
 var stashrestApp = angular.module('stashRestApp', [
-  'ngRoute',
+  //'ngRoute',
   'dgAuth',
   'stashrestControllers',
   'stashrestFilters',
-  'stashrestServices'
+  'stashrestServices',
+  'infinite-scroll'
 ]);
 
+/*
 stashrestApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
@@ -25,4 +27,4 @@ stashrestApp.config(['$routeProvider',
         redirectTo: '/group'
       });
   }]);
-
+*/
