@@ -1,7 +1,0 @@
-<div class="container-fluid">
-	<div class="list-group">
-		<div ng-repeat="p in projects | filter:query track by $index | orderBy:orderProp" class="groupList">
-			<a href="#" ng-class="getListClass(p.name)" ng-click="getUsersByGroup(p.name)">{{p.name}}</a>
-		</div>
-	</div>
-</div>

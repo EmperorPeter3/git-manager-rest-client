@@ -14,18 +14,9 @@
     <div ng-include="menuUIUrl"></div>
   </div>
 
-  <div class="container main" ng-controller="GroupListCtrl">
+  <div class="container main">
     <!-- Example row of columns -->
-    <div class="row">
-      <div class="col-md-4" >
-        <h2>Group list</h2>
-        <div ng-include="groupUIUrl"></div>
-      </div>
-      <div class="col-md-8">
-        <h2>User list</h2>
-        <div ng-include="userUIUrl"></div>
-      </div>
-    </div>
+    <div ng-view></div>
 
     <hr>
 
@@ -44,6 +35,7 @@
   <script src="bower_components/angular-md5/angular-md5.js"></script>
   <script src="bower_components/angular-state-machine/dist/angular-state-machine.js"></script>
   <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+  <script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/app.js"></script>
   <script src="js/filters.js"></script>

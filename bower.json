@@ -15,6 +15,7 @@
     "angular-base64": "~2.0.3",
     "angular-digest-auth": "~0.4.3",
     "angular-md5": "~0.1.8",
-    "angular-state-machine": "~1.2.1"
+    "angular-state-machine": "~1.2.1",
+    "angucomplete-alt": "~2.1.0"
   }
 }

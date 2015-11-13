@@ -3,28 +3,27 @@
 /* App Module */
 
 var stashrestApp = angular.module('stashRestApp', [
-  //'ngRoute',
+  'ngRoute',
   'dgAuth',
   'stashrestControllers',
   'stashrestFilters',
   'stashrestServices',
-  'infinite-scroll'
+  'infinite-scroll',
+  'angucomplete-alt'
 ]);
 
-/*
 stashrestApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/group', {
-        templateUrl: 'partials/group-list.html',
+      when('/search', {
+        templateUrl: 'partials/search-groups-by-user.html',
+        controller: 'SearchGroupsByUserCtrl'
+      }).
+      when('/index', {
+        templateUrl: 'partials/group-user-list.html',
         controller: 'GroupListCtrl'
       }).
-      when('/group/:userId', {
-        templateUrl: 'partials/user-list.html',
-        controller: 'UserListCtrl'
-      }).
       otherwise({
-        redirectTo: '/group'
+        redirectTo: '/index'
       });
   }]);
-*/

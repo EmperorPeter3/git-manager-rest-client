@@ -7,15 +7,15 @@ var stashrestControllers = angular.module('stashrestControllers', ['base64']);
 
 stashrestControllers.config(['$httpProvider', 'dgAuthServiceProvider', '$base64',
 	function($httpProvider, dgAuthServiceProvider,$base64){
-			$httpProvider.defaults.withCredentials = true;
-			dgAuthServiceProvider.setConfig({
-			        login: {
-			            method: 'GET',
-			            url: 'http://stash.mot-solutions.com:7990'
-			        }});
+		$httpProvider.defaults.withCredentials = true;
+		dgAuthServiceProvider.setConfig({
+			login: {
+				method: 'GET',
+				url: 'http://stash.mot-solutions.com:7990'
+			}});
 			//dgAuthServiceProvider.setHeader('Authorization: Basic ' + $base64.encode('mrj864:Iwb4lvn()66'));
 		}
-]);
+		]);
 
 stashrestControllers.controller('navBarCtrl',
 	['$scope','dgAuthService',
@@ -23,13 +23,14 @@ stashrestControllers.controller('navBarCtrl',
 		dgAuthService.start();
 		$scope.menuUIUrl = "partials/navbar-menu.html";
 	}]
-);
+	);
 
 stashrestControllers.controller('GroupListCtrl', 
-	['$scope', '$http', '$base64', 'dgAuthService', 'Group', 'User',
+	['$scope', '$http', '$base64', 'dgAuthService', 'Group', 'User', 
 	function($scope, $http, $base64, dgAuthService, Group, User) {
 		$scope.groupUIUrl = "partials/group-list.html";
 		$scope.userUIUrl = "partials/user-list.html";
+		$scope.getGroupsByUserUIUrl = "partials/search-groups-by-user.html"
 		$scope.projects = Group.query();
 		$scope.getUsersByGroup = function(groupName){
 			$scope.activeGroup = groupName;
@@ -43,6 +44,20 @@ stashrestControllers.controller('GroupListCtrl',
 			}
 		};
 		
+
 	}]
-);
+	);
+
+stashrestControllers.controller('SearchGroupsByUserCtrl', 
+	['$scope', 'GetAllUsers', 'GroupsByUser',
+	function($scope, GetAllUsers, GroupsByUser){
+		$scope.allUsers = GetAllUsers.getUsers();
+		$scope.getGroupsByUser = function(userName){
+			console.log(userName);
+			$scope.groupsByUser = GroupsByUser.getByUser({ct:userName});
+		};
+		$scope.remoteUrlRequestFn = function(str) {
+			return {filter: str};
+		};
+}]);
 
