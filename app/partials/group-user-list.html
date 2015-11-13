@@ -8,14 +8,14 @@
 		</div>
 	</div>
 	<div class="col-md-offset-1 col-md-4">
-	<h1>User list</h1>
-		<div class="userList">
-			<div ng-repeat="u in users" class="userList">
-				<a class="list-group-item"> id: {{u.id}} </a>
-				<a class="list-group-item"> CoreID: {{u.name}} </a>
-				<a class="list-group-item"> name: {{u.displayName}} </a>
-				<a class="list-group-item"> email: {{u.emailAddress}} </a>
-			</div>
+		<h1>User list</h1>
+
+		<div ng-repeat="u in users" class="userList">
+			<a href="#/search/{{u.displayName}}" title="Show user's groups" class="list-group-item userCoreId"><b>Name: {{u.displayName}}</b></a>
+			<a class="list-group-item"> CoreID: {{u.name}} </a>
+			<a class="list-group-item"> id: {{u.id}} </a>
+			<a class="list-group-item"> email: {{u.emailAddress}} </a>
 		</div>
+
 	</div>
 </div>

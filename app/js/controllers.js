@@ -26,8 +26,8 @@ stashrestControllers.controller('navBarCtrl',
 	);
 
 stashrestControllers.controller('GroupListCtrl', 
-	['$scope', '$http', '$base64', 'dgAuthService', 'Group', 'User', 
-	function($scope, $http, $base64, dgAuthService, Group, User) {
+	['$scope', '$http', '$base64', 'dgAuthService', 'Group', 'User', '$routeParams',
+	function($scope, $http, $base64, dgAuthService, Group, User, $routeParams) {
 		$scope.groupUIUrl = "partials/group-list.html";
 		$scope.userUIUrl = "partials/user-list.html";
 		$scope.getGroupsByUserUIUrl = "partials/search-groups-by-user.html"
@@ -49,15 +49,27 @@ stashrestControllers.controller('GroupListCtrl',
 	);
 
 stashrestControllers.controller('SearchGroupsByUserCtrl', 
-	['$scope', 'GetAllUsers', 'GroupsByUser',
-	function($scope, GetAllUsers, GroupsByUser){
+	['$scope', 'GetAllUsers', 'GroupsByUser', '$routeParams',
+	function($scope, GetAllUsers, GroupsByUser, $routeParams){
 		$scope.allUsers = GetAllUsers.getUsers();
+		var uNameCID = $routeParams.userDisplayName;
+		var uCID = uNameCID.split('-')[1];
 		$scope.getGroupsByUser = function(userName){
 			console.log(userName);
 			$scope.groupsByUser = GroupsByUser.getByUser({ct:userName});
 		};
-		$scope.remoteUrlRequestFn = function(str) {
+		$scope.getAllUserFilter = function(str) {
 			return {filter: str};
 		};
-}]);
+		$scope.selectedUser = function (selected) {
+			if (selected) {
+				$scope.userDisplayName = selected.originalObject.displayName;
+				$scope.getGroupsByUser(selected.originalObject.name);
+			}
+		};
+		if (uNameCID.length != 0){
+			$scope.userDisplayName = uNameCID;
+			$scope.getGroupsByUser(uCID);
+		}
+	}]);
 

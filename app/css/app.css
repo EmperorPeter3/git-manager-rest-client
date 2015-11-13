@@ -1,34 +1,70 @@
 /* app css stylesheet */
+
+footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #39b54a; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+   }
+
 .container.main{
   padding-top: 50px;
 }
-.groupList {
-  padding-bottom: 20px;
-} 
 .userList{
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  margin: 10px;
 }
 #userCoreID{
 	height: 33px;
 	margin-left: 15px;
 }
 
-.searchField{
-	padding-top: 40px;
-}
 a:hover {
 	cursor: pointer;
 }
 
-.groupsByUserList, .groupByUserList{
+.searchField{
 	padding-top: 20px;
 }
 
-.userFilterList{
-	padding-top: 20px;
+.list-group-item{
+	margin-top:10px;
+	margin-bottom: 10px;
 }
 
-.bold-span {
-    font-family: "bariol_boldbold";
-    margin-left: 5px;
+
+.form-control {
+    outline: 0;
+    border-color: #ECECEC;
+    border-style: solid;
+    border-width: 1px;
+    width: 95%;
+    background-color: #ffffff;
+    padding: 6px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
+
+.form-control-small {
+    -webkit-transition: width .5s ease-in-out;
+    -moz-transition: width .5s ease-in-out;
+    -o-transition: width .5s ease-in-out;
+    -ms-transition: width .5s ease-in-out;
+    transition: width .5s ease-in-out;
+    width: 72%;
+}
+
+.form-control:-webkit-autofill {
+    background-color: #fff !important;
+}
+
+.highlight {
+	color: #ff0000;
+}
+
+a.list-group-item.userCoreId:hover {
+	background-color: #68A8F9 !important;
+} 
