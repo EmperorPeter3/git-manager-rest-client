@@ -2,8 +2,8 @@
 	<div class="col-md-4 ">
 		<h1>Group list</h1>
 		<div class="groupList">
-			<div ng-repeat="p in projects" class="groupList">
-				<a ng-class="getListClass(p.name)" ng-click="getUsersByGroup(p.name)">{{p.name}}</a>
+			<div ng-repeat="g in groups" class="groupList">
+				<a ng-class="getListClass(g.name)" ng-click="getUsersByGroup(g.name)">{{g.name}}</a>
 			</div>
 		</div>
 	</div>

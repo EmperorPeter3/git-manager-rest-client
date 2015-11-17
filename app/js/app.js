@@ -4,7 +4,8 @@
 
 var stashrestApp = angular.module('stashRestApp', [
   'ngRoute',
-  'dgAuth',
+  //'oauth',
+  //'dgAuth',
   'stashrestControllers',
   'stashrestFilters',
   'stashrestServices',
